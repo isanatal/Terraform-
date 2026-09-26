@@ -1,0 +1,33 @@
+# Comandos para habilitar la configuración de redes en Azure
+# Corresponde a: "7 Instalacion de Azure CLI.mp4"
+#                "8 Conexion usando Azure CLI.mp4"
+#                "9 Demostracion.mp4"
+#                "10 Habilitar el proveedor de redes de Microsoft.mp4"
+
+# 1. Verificar instalación de Azure CLI
+az --version
+
+# 2. Iniciar sesión en Azure
+az login
+
+# 3. Ver la(s) suscripción(es) disponibles y seleccionar la que se usará
+az account list --output table
+az account set --subscription "<SUBSCRIPTION_ID>"
+
+# 4. Registrar (habilitar) el proveedor de recursos de redes de Microsoft
+az provider register --namespace Microsoft.Network
+
+# 5. Verificar el estado del registro (debe quedar en "Registered")
+az provider show --namespace Microsoft.Network --query "registrationState"
+
+# 6. (Opcional) Registrar también el proveedor de cómputo, usado por muchos labs
+az provider register --namespace Microsoft.Compute
+
+# --- Flujo de Terraform ---
+terraform init
+terraform validate
+terraform plan -var-file="terraform.tfvars"
+terraform apply -var-file="terraform.tfvars"
+
+# Para destruir los recursos al finalizar la práctica:
+terraform destroy -var-file="terraform.tfvars"

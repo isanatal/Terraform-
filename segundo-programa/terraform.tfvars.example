@@ -1,0 +1,23 @@
+# terraform.tfvars.example
+# Corresponde a: "12 Configuracion de tfvars y providers.mp4"
+#
+# Copia este archivo como "terraform.tfvars" y coloca tus valores reales.
+# terraform.tfvars NO debe subirse al repositorio (ver .gitignore) porque
+# puede contener datos sensibles como el subscription_id.
+
+subscription_id = "00000000-0000-0000-0000-000000000000"
+location        = "eastus"
+environment     = "dev"
+project_name    = "idgs-lab"
+
+vnet_address_space = ["10.0.0.0/16"]
+
+subnet_prefixes = {
+  frontend = "10.0.1.0/24"
+  backend  = "10.0.2.0/24"
+}
+
+tags = {
+  curso    = "Extraccion del conocimiento en bases de datos"
+  practica = "segundo-programa"
+}
