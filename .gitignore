@@ -1,0 +1,14 @@
+# Terraform
+.terraform/
+.terraform.lock.hcl
+*.tfstate
+*.tfstate.*
+crash.log
+crash.*.log
+
+# Variables sensibles - nunca subir el tfvars real
+terraform.tfvars
+*.auto.tfvars
+
+# Otros
+.DS_Store
